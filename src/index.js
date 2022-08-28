@@ -18,6 +18,13 @@ import DemoFaceBookApp from './pages/HookDemo/UseReduxDemo/DemoFaceBookApp/DemoF
 import LoginDemo from './pages/HookDemo/UseHookRouter/LoginDemo/LoginDemo';
 import Home from './pages/HookDemo/UseHookRouter/DemoUseParams/Home';
 import Detail from './pages/HookDemo/UseHookRouter/DemoUseParams/Detail';
+import DemoUseSearchParams from './pages/HookDemo/UseHookRouter/DemoUseSearchParams/DemoUseSearchParams';
+import DemoUseRoute from './pages/HookDemo/CustomHooks/DemoUseRoute';
+import AntDDemo from './pages/AntdDemo/AntdDemo';
+import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
+import './assets/scss/styles.scss';
+// import tenHinh from 'duong_dan_hinh'
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -29,8 +36,12 @@ root.render(
                     <Route path='detail' >
                         <Route path=':id' element={<Detail />} ></Route>
                     </Route>
+                    <Route path='search' element={<DemoUseSearchParams />}>
+                       
+                    </Route>
                     
                     <Route path='usestate' element={<UseStateDemo />}></Route>
+                    <Route path='customhook' element={<DemoUseRoute />}></Route>
                     <Route path='useeffect' element={<UseEffectDemo />}></Route>
                     <Route path='usecallback' element={<UseCallBackDemo />}></Route>
                     <Route path='usememo' element={<UseMemoDemo />}></Route>
@@ -38,6 +49,7 @@ root.render(
                     <Route path='useredux' element={<DemoNumber />}></Route>
                     <Route path='reduxfbapp' element={<DemoFaceBookApp />}></Route>
                     <Route path='logindemo' element={<LoginDemo />}></Route>
+                    <Route path='antd' element={<AntDDemo />}></Route>
                 
                 
                 </Route>

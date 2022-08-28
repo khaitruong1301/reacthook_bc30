@@ -7,9 +7,7 @@ import { NavLink, useParams } from 'react-router-dom'
 export default function Detail() {
     const [productDetail, setProductDetail] = useState({});
     const params = useParams();
-
     console.log('productDetail', productDetail);
-
     const getProductDetailApi = async () => {
         let { id } = params;
         try {
@@ -22,7 +20,6 @@ export default function Detail() {
             console.log(err);
         }
     }
-
     useEffect(() => {
         //callapi
         getProductDetailApi();

@@ -29,6 +29,11 @@ export default function HeaderHome() {
                 Login
               </NavLink>
             </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/antd">
+                AntD demo
+              </NavLink>
+            </li>
             <li className="nav-item dropdown">
               <a
                 className="nav-link dropdown-toggle"
@@ -61,6 +66,9 @@ export default function HeaderHome() {
                 </NavLink>
                 <NavLink className="dropdown-item" to="/reduxfbapp">
                   Facebook app
+                </NavLink>
+                <NavLink className="dropdown-item" to="/customhook">
+                  useRoute(custom hook)
                 </NavLink>
               </div>
             </li>

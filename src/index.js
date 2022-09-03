@@ -23,6 +23,7 @@ import DemoUseRoute from './pages/HookDemo/CustomHooks/DemoUseRoute';
 import AntDDemo from './pages/AntdDemo/AntdDemo';
 import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
 import './assets/scss/styles.scss';
+import Login from './pages/Login/Login';
 // import tenHinh from 'duong_dan_hinh'
 
 
@@ -39,7 +40,7 @@ root.render(
                     <Route path='search' element={<DemoUseSearchParams />}>
                        
                     </Route>
-                    
+                    <Route path='login' element={<Login />}></Route>
                     <Route path='usestate' element={<UseStateDemo />}></Route>
                     <Route path='customhook' element={<DemoUseRoute />}></Route>
                     <Route path='useeffect' element={<UseEffectDemo />}></Route>

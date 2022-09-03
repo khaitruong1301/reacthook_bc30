@@ -30,6 +30,11 @@ export default function HeaderHome() {
               </NavLink>
             </li>
             <li className="nav-item">
+              <NavLink className="nav-link" to="/login">
+                Login (Authorization - token)
+              </NavLink>
+            </li>
+            <li className="nav-item">
               <NavLink className="nav-link" to="/antd">
                 AntD demo
               </NavLink>

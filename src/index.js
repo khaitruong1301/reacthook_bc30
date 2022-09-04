@@ -25,12 +25,17 @@ import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
 import './assets/scss/styles.scss';
 import Login from './pages/Login/Login';
 // import tenHinh from 'duong_dan_hinh'
+import { unstable_HistoryRouter as HistoryRouter } from "react-router-dom";
+import { createBrowserHistory } from 'history';
+import Profile from './pages/Profile/Profile';
 
+//Cấu hình history (Chuyển hướng không cần hook navigate)
+export const history = createBrowserHistory({ window });
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <Provider store={store}>
-        <BrowserRouter>
+        <HistoryRouter history={history}>
             <Routes>
                 <Route path='' element={<App />}>
                     <Route index element={<Home />}></Route>
@@ -41,6 +46,8 @@ root.render(
                        
                     </Route>
                     <Route path='login' element={<Login />}></Route>
+                    <Route path='profile' element={<Profile />}></Route>
+                    
                     <Route path='usestate' element={<UseStateDemo />}></Route>
                     <Route path='customhook' element={<DemoUseRoute />}></Route>
                     <Route path='useeffect' element={<UseEffectDemo />}></Route>
@@ -55,7 +62,7 @@ root.render(
                 
                 </Route>
             </Routes>
-        </BrowserRouter>
+        </HistoryRouter>
     </Provider>
 );
 

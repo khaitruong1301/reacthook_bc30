@@ -1,4 +1,5 @@
 import {  configureStore } from '@reduxjs/toolkit'
+import drawerReducer from './reducers/drawerReducer';
 import facebookReducer from './reducers/facebookReducer';
 import  numberReducer  from './reducers/numberReducer';
 import productReducer from './reducers/productReducer';
@@ -11,6 +12,7 @@ export const store = configureStore({
         number: numberReducer,
         facebookReducer:facebookReducer,
         productReducer:productReducer,
-        userReducer:userReducer
+        userReducer:userReducer,
+        drawerReducer:drawerReducer
     }
 });

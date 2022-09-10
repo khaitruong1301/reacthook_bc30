@@ -6,7 +6,7 @@ import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProductAction, getProductApi } from '../../../../redux/reducers/productReducer';
 
-export default function Home() {
+export default function Home(props) {
     // const [arrProduct,setArrProduct] = useState([]);
     //Sử dụng useSelector lấy dữ liệu từ redux về
     const {arrProduct} = useSelector(state=>state.productReducer);

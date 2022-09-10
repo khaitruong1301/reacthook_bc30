@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import axios from 'axios';
-import { ACCESS_TOKEN, getStore, getStoreJson, setCookie, setStore, setStoreJson, USER_LOGIN } from '../../util/tools';
+import { ACCESS_TOKEN, getStore, getStoreJson, http, setCookie, setStore, setStoreJson, USER_LOGIN } from '../../util/tools';
 import { history } from '../../index';
 
 const initialState = {
@@ -25,15 +25,10 @@ export const loginApi = (userLogin) => { //{email,password}
 
     return async (dispatch) => {
         try {
-            const result = await axios({
-                url: 'https://shop.cyberlearn.vn/api/users/signin',
-                method:'POST',
-                data:userLogin
-            });
+            const result = await http.post('/users/signin',userLogin);
             //Sau khi đăng nhập thành công => lưu dữ liệu vào localstorage hoặc cookie
             console.log(result);
             setCookie(ACCESS_TOKEN,result.data.content.accessToken,30);
-
             setStore(ACCESS_TOKEN,result.data.content.accessToken);
             //Chuyển hướng về profile, trang quên mật khẩu
             history.push('/profile');
@@ -45,22 +40,12 @@ export const loginApi = (userLogin) => { //{email,password}
             console.log(err);
         }
     }
-
 }
 
-
-export const getProfileApi = (accessToken = getStore(ACCESS_TOKEN)) => {
-    console.log(accessToken);
+export const getProfileApi = () => {
     return async dispatch => {
         try {
-            const result = await axios({
-                url: 'https://shop.cyberlearn.vn/api/users/getProfile',
-                method:'POST',
-                data: 'body',
-                headers: { //headers là các phần dữ liệu mặc định gửi đi
-                    Authorization: 'Bearer ' + accessToken
-                }
-            });
+            const result = await http.post('/users/getProfile');
             //Lấy được thông tin profile => Đưa lên redux
             const action = getProfileAction(result.data.content);
             dispatch(action);

@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import axios from 'axios';
+import { http } from '../../util/tools';
 
 const initialState = {
     arrProduct: [],
@@ -34,10 +35,7 @@ export const getProductApi = () => {
 
         // console.log(getState())
         try {
-            const result = await axios({
-                url: 'https://shop.cyberlearn.vn/api/product',
-                method: 'get'
-            });
+            const result = await http.get('/product');
 
             const action = getProductAction(result.data.content)
             dispatch2(action)
@@ -52,10 +50,7 @@ export const getProductDetailApi = (id) => {
     return async (dispatch) =>{
         //Bước 2: Thực thi thunk
         try {
-            let result = await axios({
-                url: `https://shop.cyberlearn.vn/api/Product/getbyid?id=${id}`,
-                method: 'GET'
-            });
+            let result = await http.get(`/Product/getbyid?id=${id}`);
             //Sau khi lấy dữ liệu api thành công => đưa lên reducer = hàm dispatch2 từ thunk 
             // const action = {type,payload} 
             //Bước 3: Sau khi có dữ liệu => dispatch lần 2

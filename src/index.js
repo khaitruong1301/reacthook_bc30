@@ -28,6 +28,11 @@ import Login from './pages/Login/Login';
 import { unstable_HistoryRouter as HistoryRouter } from "react-router-dom";
 import { createBrowserHistory } from 'history';
 import Profile from './pages/Profile/Profile';
+import HocDemo from './pages/HOCDemo/HocDemo';
+import AdminPage from './pages/AdminPage/AdminPage';
+import AdminTemplate from './templates/AdminTemplate';
+import Modal from 'antd/lib/modal/Modal';
+import DrawerHOC from './HOC/DrawerHOC';
 
 //Cấu hình history (Chuyển hướng không cần hook navigate)
 export const history = createBrowserHistory({ window });
@@ -35,6 +40,7 @@ export const history = createBrowserHistory({ window });
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <Provider store={store}>
+        <DrawerHOC />
         <HistoryRouter history={history}>
             <Routes>
                 <Route path='' element={<App />}>
@@ -43,11 +49,11 @@ root.render(
                         <Route path=':id' element={<Detail />} ></Route>
                     </Route>
                     <Route path='search' element={<DemoUseSearchParams />}>
-                       
+
                     </Route>
                     <Route path='login' element={<Login />}></Route>
                     <Route path='profile' element={<Profile />}></Route>
-                    
+
                     <Route path='usestate' element={<UseStateDemo />}></Route>
                     <Route path='customhook' element={<DemoUseRoute />}></Route>
                     <Route path='useeffect' element={<UseEffectDemo />}></Route>
@@ -57,9 +63,15 @@ root.render(
                     <Route path='useredux' element={<DemoNumber />}></Route>
                     <Route path='reduxfbapp' element={<DemoFaceBookApp />}></Route>
                     <Route path='logindemo' element={<LoginDemo />}></Route>
+                    <Route path='hoc' element={<HocDemo />}></Route>
                     <Route path='antd' element={<AntDDemo />}></Route>
-                
-                
+                </Route>
+            </Routes>
+            <Routes>
+                <Route path='admin' element={<AdminPage />}>
+                    <Route index element={<AdminTemplate Component={Login} />}></Route>
+                    <Route path='users' element={<AdminTemplate Component={AntDDemo} />}></Route>
+                    <Route path='useref' element={<AdminTemplate Component={UseRefDemo} />}></Route>
                 </Route>
             </Routes>
         </HistoryRouter>

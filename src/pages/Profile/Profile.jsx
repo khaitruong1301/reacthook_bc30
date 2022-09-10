@@ -6,7 +6,6 @@ import { getProfileApi } from '../../redux/reducers/userReducer';
 import { ACCESS_TOKEN, getStore } from '../../util/tools';
 
 export default function Profile() {
-
     const { userLogin } = useSelector(state => state.userReducer);
     const dispatch = useDispatch();
 
@@ -15,11 +14,11 @@ export default function Profile() {
         dispatch(getProfileApi());
     }, [])
     
-    if (!getStore(ACCESS_TOKEN)) {
-        //Nếu chưa đăng nhập => Chuyển hướng trang
-        alert('Đăng nhập để vào trang này !');
-        return <Navigate to='/login' />
-    }
+    // if (!getStore(ACCESS_TOKEN)) {
+    //     //Nếu chưa đăng nhập => Chuyển hướng trang
+    //     alert('Đăng nhập để vào trang này !');
+    //     return <Navigate to='/login' />
+    // }
 
     return (
         <div className='container-fluid'>
